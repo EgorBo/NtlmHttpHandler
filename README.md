@@ -10,7 +10,7 @@ handler.Credentials = new NetworkCredential("user", "psw", "domain"); // or via 
 var httpClient = new HttpClient(handler);
 ```
 
-For `Link All` or `Link SDK assemblies only` modes you need to preserve the following items via XML (see ):
+For `Link All` or `Link SDK assemblies only` modes you need to preserve the following items [via XML](https://docs.microsoft.com/en-us/xamarin/cross-platform/deploy-test/linker):
 ```xml
 <linker>
     <assembly fullname="System.Net.Http">
