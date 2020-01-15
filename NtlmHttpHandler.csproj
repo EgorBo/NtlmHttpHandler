@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionPrefix>1.0.1</VersionPrefix>
+    <PackageId>NtlmHttpHandler</PackageId>
+    <Description>NtlmHttpHandler allows to create NTLM-friendly http handlers for HttpClient.</Description>
+    <Copyright>EgorBo</Copyright>
+    <Authors>EgorBo</Authors>
+    <PackageTags>ntlm;xamarin.android;android;gss</PackageTags>
+    <PackageProjectUrl>https://github.com/EgorBo/NtlmHttpHandler</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/EgorBo/NtlmHttpHandler</RepositoryUrl>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+</Project>
