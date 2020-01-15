@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.0.2</VersionPrefix>
     <PackageId>NtlmHttpHandler</PackageId>
     <Description>NtlmHttpHandler allows to create NTLM-friendly http handlers for HttpClient.</Description>
     <Copyright>EgorBo</Copyright>
