@@ -1,5 +1,6 @@
 # NtlmHttpHandler
 NtlmHttpHandler allows to create NTLM-friendly http handlers for HttpClient.
+It creates an instance of legacy WebRequest-based HttpHandler for Xamarin.Android and a modern SocketHandler-based `HttpClientHandler` for other platforms.
 
 Nuget: https://www.nuget.org/packages/NtlmHttpHandler/
 
@@ -20,4 +21,4 @@ For `Link All` or `Link SDK assemblies only` modes you need to preserve the foll
 </linker>
 ```
 
-For `Release` mode don't forget to enable "Internet" permission in Android Manifest.
+For `Release` mode and Xamarin.Android don't forget to enable "Internet" permission in Android Manifest.
