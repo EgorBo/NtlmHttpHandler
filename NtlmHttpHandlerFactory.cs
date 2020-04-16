@@ -32,7 +32,7 @@ Make sure you you've added the following types to your linker.xml:
                 throw new InvalidOperationException("`System.Net.Http.MonoWebRequestHandler` was not found in System.Net.Http." + LinkerTipText);
 
             ConstructorInfo[] internalMonoHandlerCtors = monoHandlerType.GetConstructors(
-                BindingFlags.NonPublic | BindingFlags.Instance);
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
             if (internalMonoHandlerCtors.Length < 1)
                 throw new InvalidOperationException("Internal parameter-less constructor for `System.Net.Http.MonoWebRequestHandler` was not found." + LinkerTipText);
