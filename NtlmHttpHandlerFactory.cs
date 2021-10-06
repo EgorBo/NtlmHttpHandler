@@ -15,6 +15,9 @@ Make sure you you've added the following types to your linker.xml:
         <type fullname=""System.Net.Http.HttpClientHandler*"" />
         <type fullname=""System.Net.Http.MonoWebRequestHandler*"" />
     </assembly>
+    <assembly fullname=""Mono.Security"">
+        <type fullname=""Mono.Security.Protocol.Ntlm.NtlmSettings*"" />
+    </assembly>
 </linker>";
 
         public static HttpClientHandler Create(bool ntlmV2Only = false)
