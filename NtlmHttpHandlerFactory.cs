@@ -17,7 +17,7 @@ Make sure you you've added the following types to your linker.xml:
     </assembly>
 </linker>";
 
-        public static HttpClientHandler Create()
+        public static HttpClientHandler Create(bool ntlmV2Only = false)
         {
             Type androidenvType = Type.GetType("Android.Runtime.AndroidEnvironment, Mono.Android");
             if (androidenvType == null)
@@ -36,6 +36,22 @@ Make sure you you've added the following types to your linker.xml:
 
             if (internalMonoHandlerCtors.Length < 1)
                 throw new InvalidOperationException("Internal parameter-less constructor for `System.Net.Http.MonoWebRequestHandler` was not found." + LinkerTipText);
+
+            if (ntlmV2Only)
+            {
+                /* The MonoWebRequestHandler will look at the static NtlmSettings.DefaultAuthLevel property when determining
+                 * which LM/NTLM authentication level to use.
+                 * 
+                 * When the server doing the NTLM authentication has been set up to NTLM V2 Only and to refuse LM and NTLM then authentication will fail unless the AuthLevel of the client has been set to NTLMv2Only.
+                 */
+                var ntlmSettingsType = Type.GetType("Mono.Security.Protocol.Ntlm.NtlmSettings, Mono.Security");
+                var defaultAuthLevelProperty = ntlmSettingsType?.GetProperty("DefaultAuthLevel", BindingFlags.Public | BindingFlags.Static);
+                if (defaultAuthLevelProperty != null)
+                {
+                    /* Auth level enum values: LM_and_NTLM, LM_and_NTLM_and_try_NTLMv2_Session, NTLM_only, NTLMv2_only */
+                    defaultAuthLevelProperty.SetValue(null, Enum.Parse(defaultAuthLevelProperty.PropertyType, "NTLMv2_only", ignoreCase: true));
+                }
+            }
 
             object internalMonoHandler = internalMonoHandlerCtors[0].Invoke(null);
 
